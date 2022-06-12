@@ -15,5 +15,13 @@ router.get('/notes', (req, res) => {
     })
 })
 // post
-
+router.post('/notes', (req, res) => {
+    req.body = notes.length.tostring();
+    
+}
+)
+router.delete('/notes', (req, res) => {
+    
+}
+)
 module.exports = router;
