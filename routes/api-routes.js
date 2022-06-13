@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const fs = require("fs");
 const path = require("path");
-
+// getting all the notes stored in the database
 router.get("/notes", (req, res) => {
   fs.readFile("./db/db.json", (err, data) => {
     if (err) {
@@ -15,7 +15,21 @@ router.get("/notes", (req, res) => {
     }
   });
 });
-// post
+// Getting a route by id
+router.get('/notes', (req, res) => {
+  fs.readFile('./db/db.json', (err, data) => {
+    if (err) {
+      throw err;
+    } else {
+      let notes = [];
+      if (data) {
+        notes = JSON.parse(data)
+      }
+    } 
+    let note = note.params.id;
+   })
+})
+// post route for adding notes to the database
 router.post("/notes", (req, res) => {
   fs.readFile("./db/db.json", (err, data) => {
     if (err) {
@@ -41,6 +55,7 @@ router.post("/notes", (req, res) => {
     }
   });
 });
+// Delete route for removing notes from the database
 router.delete("/notes/:id", (req, res) => {
   fs.readFile("./db/db.json", (err, data) => {
     if (err) {
@@ -52,7 +67,7 @@ router.delete("/notes/:id", (req, res) => {
       }
       let note = req.body;
       note.id = req.params.id;
-      notes.splice(note.id);
+      notes.splice(note.id, 1);
       fs.writeFileSync(
         path.join(__dirname, "../db/db.json"),
         JSON.stringify(notes),
