@@ -61,23 +61,21 @@ router.delete("/notes/:id", (req, res) => {
     if (err) {
       throw err;
     } else {
-      let notes = [];
-      if (data) {
-        notes = JSON.parse(data);
+        let notes = [];
+        if (data) {
+          notes = JSON.parse(data);
+        //   console.log('notes', notes)
       }
       let note = req.body;
       note.id = req.params.id;
-      notes.splice(note.id, 1);
-      fs.writeFileSync(
-        path.join(__dirname, "../db/db.json"),
-        JSON.stringify(notes),
-        (err, data) => {
+      notes.splice([note.id], 1);
+      fs.writeFileSync(path.join(__dirname, "../db/db.json"),JSON.stringify(notes),(err, data) => {
           if (err) {
             throw err;
           }
+          return res.json(notes);
         }
       );
-      return res.json(notes);
     }
   });
   res.json(req.params.id)
