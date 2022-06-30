@@ -26,3 +26,5 @@ THEN that note appears in the right-hand column
 WHEN I click on the Write icon in the navigation at the top of the page
 THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
 ![image](https://user-images.githubusercontent.com/98612225/176747153-484ba25e-76c1-4678-9164-a6c327a4feed.png)
+## link to live website
+ https://jaydencowley.github.io/note-taker/
